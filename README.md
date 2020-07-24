@@ -1,27 +1,58 @@
 # NgccIssueRepro
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+```
+npm install # will run ngcc in postinstall hook
+./start-builds.sh
+```
 
-## Development server
+This will show:
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
 
-## Code scaffolding
+Expected, shouldn't lock as ngcc was ran before hand.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Actual:
+```
+» ./start-builds.sh 
 
-## Build
+> ngcc-issue-repro@0.0.0 build5 /home/rush/code/angular-bug/ngcc-issue-repro
+> BUILD_NAME=build1 webpack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+> ngcc-issue-repro@0.0.0 build2 /home/rush/code/angular-bug/ngcc-issue-repro
+> BUILD_NAME=build1 webpack
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+> ngcc-issue-repro@0.0.0 build3 /home/rush/code/angular-bug/ngcc-issue-repro
+> BUILD_NAME=build1 webpack
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+> ngcc-issue-repro@0.0.0 build1 /home/rush/code/angular-bug/ngcc-issue-repro
+> BUILD_NAME=build1 webpack
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+> ngcc-issue-repro@0.0.0 build4 /home/rush/code/angular-bug/ngcc-issue-repro
+> BUILD_NAME=build1 webpack
+
+Another process, with id 31479, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31479, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31479, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31479, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31472, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31472, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31472, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31458, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31458, is currently running ngcc.
+Waiting up to 250s for it to finish.
+Another process, with id 31451, is currently running ngcc.
+Waiting up to 250s for it to finish
+```
