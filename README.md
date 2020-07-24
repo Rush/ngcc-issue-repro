@@ -5,11 +5,6 @@ npm install # will run ngcc in postinstall hook
 ./start-builds.sh
 ```
 
-This will show:
-```
-
-```
-
 Expected, shouldn't lock as ngcc was ran before hand.
 
 Actual:
